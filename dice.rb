@@ -17,38 +17,46 @@ get("/giraffe") do
 end
 
 get("/dice/2/6") do
-  first_die = rand(1..6)
-  second_die = rand(1..6)
-  sum = first_die + second_die
-
-  @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
+@rolls = []
+2.times do
+  dice = rand(1..6)
+  @rolls.push(dice)
+end
 
   erb(:two_six)
 end
 
 get("/dice/2/10") do
-  first_die = rand(1..10)
-  second_die = rand(1..10)
-  sum = first_die + second_die
-  outcome = " you rolled a #{first_die} and a #{second_die} for the total of #{sum}."
-  "<h1>2d10</h1>
-  <p>#{outcome} </p>"
+@rolls = []
+2.times do 
+  dice = rand(1..10)
+  @rolls.push(dice)
+end
+ erb(:two_ten)
 
 end
-get("/dice1/20") do 
-  dice = rand(1..20)
-  outcome = "you rolled the dice and the outcome is #{dice}."
-  "<h1>1d20</h1>
-  <p>#{outcome}</p>"
+get("/dice/1/20") do 
+  @rolls = []
+  1.times do 
+    dice = rand(1..20)
+    @rolls.push(dice)
+  end
+  erb(:one_twenty)
+
 end
 get("/dice/5/4") do
-  dice_one = rand(1..4)
-  dice_two = rand(1..4)
-  dice_three = rand(1..4)
-  dice_four =  rand(1..4) 
-  dice_five = rand(1..4)
-  sum = dice_one + dice_two + dice_three + dice_four + dice_five
-  outcome = "you have rolled a #{dice_one} and #{dice_two} and #{dice_three} and #{dice_four} and #{dice_five} and the sum of them is #{sum}."
-  "<h1>5d4</h1>
-  <p>#{outcome}</p>"
+@rolls = []
+5.times do 
+  dice =rand(1..4)
+  @rolls.push(dice)
+end
+  erb(:five_four)
+end
+get("/dice/100/6") do
+  @rolls = []
+  100.times do
+    dice = rand(1..6)
+    @rolls.push(dice)
+  end
+  erb(:one_hundred_six)
 end
